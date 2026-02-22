@@ -716,7 +716,7 @@ a {
 /* ── 6. Services Section ─────────────────────────────────── */
 #services {
     background: var(--bg-2);
-    padding: 10rem 0;
+    padding: 10rem 0 4rem;
     overflow: hidden;
 }
 
@@ -904,7 +904,7 @@ a {
 /* ── 7. About Section ────────────────────────────────────── */
 #about {
     background: var(--bg);
-    padding: 10rem 0;
+    padding: 4rem 0 10rem;
     overflow: hidden;
 }
 
