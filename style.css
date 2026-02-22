@@ -549,7 +549,7 @@ a {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: calc(var(--nav-h) + 3rem) 1.75rem 5rem;
+        padding: calc(var(--nav-h) + 3rem) 1.75rem 9rem;
     }
 
     /* Text colours adapt to dark overlay */
