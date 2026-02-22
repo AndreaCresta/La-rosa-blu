@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Rosa Blu — Centro Estetico · Finale Ligure</title>
+    <meta name="description"
+        content="Centro Estetico La Rosa Blu a Finale Ligure. Digital Atelier specializzato in Nail Art, Ricostruzione Gel, Epilazione professionale e trattamenti corpo. Prenota ora.">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts: Cormorant Garamond (Serif heading) + Inter (Sans body) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap (structure only, heavily overridden) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="page-top">
+
+    <!-- ─── Custom cursor (desktop only) ─────────────────────── -->
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- ─── Navbar ────────────────────────────────────────────── -->
+    <nav id="mainNav" role="navigation" aria-label="Navigazione principale">
+        <a class="nav__brand" href="#page-top">La Rosa Blu</a>
+
+        <ul class="nav__links" id="navLinks">
+            <li><a href="#hero" class="nav-anchor">Home</a></li>
+            <li><a href="#services" class="nav-anchor">Servizi</a></li>
+            <li><a href="#about" class="nav-anchor">Chi Siamo</a></li>
+            <li><a href="#testimonials" class="nav-anchor">Testimonianze</a></li>
+            <li><a href="#contact" class="nav-anchor">Contatti</a></li>
+        </ul>
+
+        <a href="https://wa.me/391234567890" target="_blank" rel="noopener" class="nav__cta d-none d-lg-inline-flex"
+            id="navCta">
+            <i class="fab fa-whatsapp"></i>
+            <span>Prenota Ora</span>
+        </a>
+
+        <button class="nav__hamburger" id="navHamburger" aria-label="Apri menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile full-screen drawer -->
+    <div class="nav__drawer" id="navDrawer" aria-hidden="true">
+        <button class="nav__drawer__close" id="navDrawerClose" aria-label="Chiudi menu">×</button>
+        <a href="#hero" class="nav-anchor">Home</a>
+        <a href="#services" class="nav-anchor">Servizi</a>
+        <a href="#about" class="nav-anchor">Chi Siamo</a>
+        <a href="#testimonials" class="nav-anchor">Testimonianze</a>
+        <a href="#contact" class="nav-anchor">Contatti</a>
+    </div>
+
+    <!-- ─── Hero ──────────────────────────────────────────────── -->
+    <header id="hero">
+
+        <!-- Left: editorial text -->
+        <div class="hero__text">
+            <p class="hero__kicker reveal">Centro Estetico · Finale Ligure</p>
+
+            <h1 class="hero__headline">
+                <span class="reveal-mask"><span class="reveal-mask-inner">La tua</span></span>
+                <span class="reveal-mask"><span class="reveal-mask-inner"><em>bellezza</em></span></span>
+                <span class="reveal-mask"><span class="reveal-mask-inner">fiorisce qui.</span></span>
+            </h1>
+
+            <p class="hero__body reveal">
+                Specialiste in Nail Art, Ricostruzione Gel ed Epilazione professionale.
+                Un'oasi di cura e relax nel cuore della Riviera Ligure.
+            </p>
+
+            <div class="hero__actions reveal">
+                <a href="https://wa.me/391234567890" target="_blank" rel="noopener"
+                    class="btn-atelier btn-atelier--dark">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Prenota Appuntamento</span>
+                </a>
+                <a href="#services" class="btn-atelier btn-atelier--outline nav-anchor">
+                    <span>Scopri i Servizi</span>
+                </a>
+            </div>
+
+            <div class="hero__scroll-hint reveal">
+                <span></span>
+                Scroll
+            </div>
+        </div>
+
+        <!-- Right: full-bleed image with parallax -->
+        <div class="hero__image" id="heroImage">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1400&q=85"
+                alt="Nail Art — La Rosa Blu" id="heroImg" loading="eager">
+        </div>
+
+    </header>
+
+    <!-- ─── Services ──────────────────────────────────────────── -->
+    <section id="services" aria-labelledby="servicesTitle">
+        <div class="services__header section-header">
+            <span class="eyebrow reveal">Cosa Offriamo</span>
+            <h2 id="servicesTitle" class="reveal">I Nostri Servizi</h2>
+            <div class="divider-line centered reveal"></div>
+            <p class="reveal">Ogni dettaglio, curato con maestria artigianale e passione autentica.</p>
+        </div>
+
+        <!-- Asymmetric 3-panel grid -->
+        <div class="services__grid">
+
+            <!-- Panel 1: Nail Bar (tall, left) -->
+            <div class="service-panel reveal-scale" id="panelNail">
+                <img class="service-panel__img"
+                    src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80"
+                    alt="Nail Bar — Ricostruzione Gel e Nail Art" loading="lazy">
+                <div class="service-panel__overlay"></div>
+                <div class="service-panel__content">
+                    <!-- Animated SVG: hand sparkle -->
+                    <svg class="service-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                        <line x1="6" y1="1" x2="6" y2="4" />
+                        <line x1="10" y1="1" x2="10" y2="4" />
+                        <line x1="14" y1="1" x2="14" y2="4" />
+                    </svg>
+                    <p class="service-panel__label">Nail Bar</p>
+                    <h3 class="service-panel__title">Mani d'artista,<br>stile impeccabile</h3>
+                    <ul class="service-panel__list">
+                        <li>Ricostruzione Unghie Gel</li>
+                        <li>Refill & Semipermanente</li>
+                        <li>Nail Art Personalizzata</li>
+                    </ul>
+                    <a href="https://wa.me/391234567890" class="service-panel__link" target="_blank" rel="noopener">
+                        Prenota <i class="fas fa-arrow-right fa-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Panel 2: Epilazione -->
+            <div class="service-panel reveal-scale" id="panelEpil">
+                <img class="service-panel__img"
+                    src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80"
+                    alt="Epilazione e Trattamenti Corpo" loading="lazy">
+                <div class="service-panel__overlay"></div>
+                <div class="service-panel__content">
+                    <svg class="service-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                    <p class="service-panel__label">Epilazione &amp; Corpo</p>
+                    <h3 class="service-panel__title">Pelle liscia,<br>sensazione seta</h3>
+                    <ul class="service-panel__list">
+                        <li>Ceretta Completa</li>
+                        <li>Epilazione Delicata</li>
+                        <li>Trattamenti Pelle</li>
+                    </ul>
+                    <a href="https://wa.me/391234567890" class="service-panel__link" target="_blank" rel="noopener">
+                        Prenota <i class="fas fa-arrow-right fa-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Panel 3: Trattamenti Viso -->
+            <div class="service-panel reveal-scale" id="panelViso">
+                <img class="service-panel__img"
+                    src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80"
+                    alt="Trattamenti Viso" loading="lazy">
+                <div class="service-panel__overlay"></div>
+                <div class="service-panel__content">
+                    <svg class="service-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <p class="service-panel__label">Trattamenti Viso</p>
+                    <h3 class="service-panel__title">Cura profonda,<br>luce naturale</h3>
+                    <ul class="service-panel__list">
+                        <li>Pulizia del Viso</li>
+                        <li>Idratazione Intensiva</li>
+                        <li>Anti-age &amp; Tonificante</li>
+                    </ul>
+                    <a href="https://wa.me/391234567890" class="service-panel__link" target="_blank" rel="noopener">
+                        Prenota <i class="fas fa-arrow-right fa-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div><!-- /.services__grid -->
+    </section>
+
+    <!-- ─── About ──────────────────────────────────────────────── -->
+    <section id="about" aria-labelledby="aboutTitle">
+        <div class="about__grid">
+
+            <!-- Image -->
+            <div class="about__image-wrap reveal-left">
+                <img class="about__img"
+                    src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80"
+                    alt="Interno salone La Rosa Blu — Finale Ligure" loading="lazy">
+                <div class="about__badge">
+                    <span class="about__badge-num">10+</span>
+                    <span class="about__badge-label">Anni di<br>Esperienza</span>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="about__text reveal-right">
+                <span class="eyebrow">Chi Siamo</span>
+                <div class="divider-line"></div>
+                <h2 id="aboutTitle">Il tuo rifugio di bellezza a Finale Ligure</h2>
+                <p>
+                    La Rosa Blu nasce dalla passione per la bellezza e il benessere. Situato nel cuore di Finale Ligure,
+                    il nostro atelier ti accoglie in un ambiente caldo, igienizzato e ispirato all'estetica editoriale —
+                    dove ogni dettaglio è orchestrato per offrirti un'esperienza di cura unica.
+                </p>
+
+                <div class="about__features">
+                    <div class="about__feature">
+                        <div class="about__feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A89A" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5>Qualità &amp; Igiene</h5>
+                            <p>Strumenti sterilizzati e prodotti certificati per la tua totale sicurezza.</p>
+                        </div>
+                    </div>
+                    <div class="about__feature">
+                        <div class="about__feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A89A" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5>Passione &amp; Cura</h5>
+                            <p>Uno staff qualificato che mette al primo posto le tue esigenze e il tuo comfort.</p>
+                        </div>
+                    </div>
+                    <div class="about__feature">
+                        <div class="about__feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A89A" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5>Puntualità &amp; Rispetto</h5>
+                            <p>Il tuo tempo è prezioso. Rispettiamo ogni appuntamento con professionalità.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#contact" class="btn-atelier btn-atelier--outline nav-anchor">
+                    <span>Scopri dove siamo</span>
+                    <i class="fas fa-arrow-right fa-xs"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─── Testimonials ──────────────────────────────────────── -->
+    <section id="testimonials" aria-labelledby="testiTitle">
+        <div class="testimonials__header">
+            <span class="eyebrow reveal">Dicono di Noi</span>
+            <h2 id="testiTitle" class="reveal">Le parole delle nostre clienti</h2>
+            <div class="divider-line centered reveal"></div>
+        </div>
+
+        <div class="testimonials__grid">
+
+            <article class="testi-card reveal">
+                <div class="testi-card__stars" aria-label="5 stelle">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="testi-card__quote">
+                    "Unghie perfette che durano settimane! Le ragazze sono bravissime e molto gentili.
+                    Il miglior centro a Finale Ligure, senza dubbio."
+                </p>
+                <div class="testi-card__author">
+                    <div class="testi-card__avatar" aria-hidden="true">G</div>
+                    <div>
+                        <span class="testi-card__name">Giulia M.</span>
+                        <span class="testi-card__role">Cliente fedele</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="testi-card reveal">
+                <div class="testi-card__stars" aria-label="5 stelle">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="testi-card__quote">
+                    "Ho provato la ceretta e sono rimasta colpita dalla delicatezza.
+                    Locale pulitissimo e molto accogliente. Più che consigliato!"
+                </p>
+                <div class="testi-card__author">
+                    <div class="testi-card__avatar" aria-hidden="true">E</div>
+                    <div>
+                        <span class="testi-card__name">Elena R.</span>
+                        <span class="testi-card__role">Residente</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="testi-card reveal">
+                <div class="testi-card__stars" aria-label="5 stelle">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="testi-card__quote">
+                    "Venendo in vacanza cercavo un posto per il semipermanente.
+                    Ho trovato professionalità e simpatia. Tornerò sicuramente l'estate prossima."
+                </p>
+                <div class="testi-card__author">
+                    <div class="testi-card__avatar" aria-hidden="true">S</div>
+                    <div>
+                        <span class="testi-card__name">Sofia L.</span>
+                        <span class="testi-card__role">Turista</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ─── Footer & Contact ──────────────────────────────────── -->
+    <footer id="contact" aria-labelledby="footerBrand">
+
+        <div class="footer__grid">
+
+            <!-- Brand col -->
+            <div>
+                <a class="footer__brand" id="footerBrand" href="#page-top">La Rosa Blu</a>
+                <p class="footer__tagline">
+                    Il tuo centro estetico di fiducia a Finale Ligure. Bellezza, cura e relax
+                    in un ambiente esclusivo e professionale sulla Riviera di Ponente.
+                </p>
+                <div class="footer__socials">
+                    <a href="#" class="footer__social-btn" aria-label="Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="footer__social-btn" aria-label="Facebook">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/391234567890" target="_blank" rel="noopener" class="footer__social-btn"
+                        aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contacts & Hours col -->
+            <div>
+                <h3 class="footer__col-title">Contatti &amp; Orari</h3>
+                <address style="font-style:normal;">
+                    <div class="footer__contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Via Esempio 123,<br>17024 Finale Ligure (SV)</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+390191234567">+39 019 1234567</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:info@larosablu.it">info@larosablu.it</a>
+                    </div>
+                </address>
+
+                <hr style="border-color:rgba(255,255,255,.06);margin:1.5rem 0;">
+
+                <ul class="footer__hours" aria-label="Orari di apertura">
+                    <li><span>Lunedì – Venerdì</span> <span>09:00 – 19:00</span></li>
+                    <li><span>Sabato</span> <span>09:00 – 13:00</span></li>
+                    <li class="closed"><span>Domenica</span> <span>Chiuso</span></li>
+                </ul>
+            </div>
+
+            <!-- Map col -->
+            <div>
+                <h3 class="footer__col-title">Dove Siamo</h3>
+                <div class="footer__map">
+                    <iframe title="Mappa La Rosa Blu Finale Ligure"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2864.557768662924!2d8.341234!3d44.170123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d31b2af5555555%3A0x5555555555555555!2sFinale%20Ligure!5e0!3m2!1sit!2sit!4v1620000000000!5m2!1sit!2sit"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+        </div><!-- /.footer__grid -->
+
+        <div class="footer__bottom">
+            <span>© 2025 La Rosa Blu · Finale Ligure</span>
+            <span>Designed with <i class="fas fa-heart" style="color:var(--rose);margin:0 .3em;" aria-hidden="true"></i>
+                for Beauty</span>
+        </div>
+
+    </footer>
+
+    <!-- ─── Mobile Tab Bar ────────────────────────────────────── -->
+    <nav class="tab-bar" aria-label="Navigazione rapida mobile">
+        <a href="#hero" class="tab-bar__item nav-anchor" id="tabHome" aria-label="Home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Home
+        </a>
+        <a href="#services" class="tab-bar__item nav-anchor" id="tabServizi" aria-label="Servizi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+            </svg>
+            Servizi
+        </a>
+        <a href="https://wa.me/391234567890" target="_blank" rel="noopener" class="tab-bar__item tab-bar__item--cta"
+            id="tabWhatsapp" aria-label="Prenota su WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Prenota
+        </a>
+        <a href="#about" class="tab-bar__item nav-anchor" id="tabAbout" aria-label="Chi Siamo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+            </svg>
+            Chi Siamo
+        </a>
+        <a href="#contact" class="tab-bar__item nav-anchor" id="tabContact" aria-label="Contatti">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+            </svg>
+            Dove Siamo
+        </a>
+    </nav>
+
+    <!-- ─── Scripts ───────────────────────────────────────────── -->
+    <!-- Bootstrap JS (for structural collapse helpers only) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- GSAP Core + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
