@@ -355,6 +355,8 @@ a {
 @media (max-width: 991px) {
     #mainNav {
         padding: 0 1.25rem;
+        justify-content: flex-start;
+        gap: .75rem;
     }
 
     .nav__links {
@@ -493,14 +495,67 @@ a {
 }
 
 @media (max-width: 991px) {
+
+    /* Full-screen hero with image as background + dark overlay */
     #hero {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 55vw;
+        display: block;
+        position: relative;
         min-height: 100svh;
+        padding-top: 0;
+    }
+
+    .hero__image {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    .hero__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
     }
 
     .hero__text {
-        padding: 5rem 1.5rem 2.5rem;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(to top,
+                rgba(10, 17, 40, .88) 0%,
+                rgba(10, 17, 40, .55) 55%,
+                rgba(10, 17, 40, .18) 100%);
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: calc(var(--nav-h) + 2rem) 1.5rem 2.5rem;
+    }
+
+    /* Text colours adapt to dark overlay */
+    .hero__kicker {
+        color: var(--rose-light);
+    }
+
+    .hero__headline {
+        color: var(--white);
+    }
+
+    .hero__headline em {
+        color: var(--rose-light);
+    }
+
+    .hero__body {
+        color: rgba(255, 255, 255, .75);
+        max-width: 100%;
+    }
+
+    .hero__actions .btn-atelier--outline {
+        border-color: rgba(255, 255, 255, .5);
+        color: var(--white);
+    }
+
+    .hero__actions .btn-atelier--outline::before {
+        background: rgba(255, 255, 255, .15);
     }
 
     .hero__image::before {
@@ -509,12 +564,6 @@ a {
 
     .hero__scroll-hint {
         display: none;
-    }
-}
-
-@media (max-width: 575px) {
-    #hero {
-        grid-template-rows: auto 65vw;
     }
 }
 
@@ -1276,105 +1325,48 @@ footer#contact {
 }
 
 
-/* ── 10. Mobile Tab Bar ──────────────────────────────────── */
-.tab-bar {
+/* ── 10. Floating WhatsApp CTA (mobile, bottom-right) ───── */
+.wa-float {
     display: none;
 }
 
 @media (max-width: 991px) {
-    .tab-bar {
+    .wa-float {
         display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 999;
-        background: rgba(249, 247, 242, .88);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-top: 1px solid rgba(201, 168, 154, .25);
-        padding: .6rem 0 max(.6rem, env(safe-area-inset-bottom));
-        justify-content: space-around;
         align-items: center;
-    }
-
-    body {
-        padding-bottom: 72px;
-    }
-
-    .tab-bar__item {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: .25rem;
-        font-size: var(--fs-label);
-        font-weight: 500;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-        cursor: pointer;
-        transition: color .25s;
-        background: none;
-        border: none;
-        padding: .4rem 0;
-        text-decoration: none;
-    }
-
-    .tab-bar__item svg {
-        width: 22px;
-        height: 22px;
-    }
-
-    .tab-bar__item:hover,
-    .tab-bar__item.active {
-        color: var(--navy);
-    }
-
-    /* WhatsApp CTA tab */
-    .tab-bar__item--cta {
-        background: #25D366;
-        border-radius: 100px;
-        color: var(--white);
-        padding: .6rem 1.6rem;
-        flex: none;
-        flex-direction: row;
         gap: .5rem;
-        font-size: .6875rem;
-        box-shadow: 0 4px 20px rgba(37, 211, 102, .35);
-        transition: background .3s, transform .3s;
+        position: fixed;
+        bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+        right: 1.25rem;
+        z-index: 990;
+        background: #25D366;
+        color: #fff;
+        border-radius: 100px;
+        padding: .75rem 1.4rem .75rem 1.1rem;
+        font-family: var(--font-body);
+        font-size: .8125rem;
+        font-weight: 500;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, .4);
+        text-decoration: none;
+        transition: background .3s, transform .3s, box-shadow .3s;
     }
 
-    .tab-bar__item--cta:hover,
-    .tab-bar__item--cta.active {
+    .wa-float i {
+        font-size: 1.15rem;
+    }
+
+    .wa-float:hover {
         background: #128C7E;
-        color: var(--white);
         transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(37, 211, 102, .45);
     }
 }
 
-/* ── 11. GSAP & Animation Hooks ──────────────────────────── */
-
-/* Initial hidden state — JS adds these, degraded gracefully */
-.js-ready .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.js-ready .reveal-left {
-    opacity: 0;
-    transform: translateX(-40px);
-}
-
-.js-ready .reveal-right {
-    opacity: 0;
-    transform: translateX(40px);
-}
-
-.js-ready .reveal-scale {
-    opacity: 0;
-    transform: scale(.95);
-}
+/* ── 11. GSAP & Animation Hooks ─────────────────────── */
+/* GSAP sets initial hidden states via gsap.set() in script.js.
+   No CSS hiding here — elements stay visible if GSAP fails. */
 
 /* Mask-reveal wrapper */
 .reveal-mask {
@@ -1382,8 +1374,9 @@ footer#contact {
     display: block;
 }
 
-.js-ready .reveal-mask-inner {
-    transform: translateY(105%);
+/* reveal-mask-inner: GSAP sets initial yPercent:105 via gsap.set() in script.js
+   so text is always visible if GSAP fails to load */
+.reveal-mask-inner {
     display: inline-block;
 }
 
