@@ -355,8 +355,29 @@ a {
 @media (max-width: 991px) {
     #mainNav {
         padding: 0 1.25rem;
-        justify-content: flex-start;
-        gap: .75rem;
+        justify-content: space-between;
+        /* brand-left, hamburger-right */
+        background: rgba(10, 17, 40, .35);
+        border-bottom-color: transparent;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Always white text on mobile (sits over dark hero image) */
+    #mainNav .nav__brand {
+        color: var(--white);
+    }
+
+    #mainNav.nav--scrolled .nav__brand {
+        color: var(--white);
+    }
+
+    #mainNav .nav__hamburger span {
+        background: var(--white);
+    }
+
+    #mainNav .nav__hamburger {
+        border-color: rgba(255, 255, 255, .35);
     }
 
     .nav__links {
@@ -379,12 +400,12 @@ a {
 
 /* ── 4. Hero ─────────────────────────────────────────────── */
 #hero {
-    min-height: 100svh;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
-    padding-top: var(--nav-h);
+    /* No padding-top — navbar is fixed overlay; centering handled in .hero__text */
 }
 
 /* Left text panel */
@@ -392,7 +413,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 6rem 5rem 6rem 8vw;
+    padding: calc(var(--nav-h) + 1rem) 4rem calc(var(--nav-h) + 1rem) 8vw;
     position: relative;
     z-index: 2;
     background: var(--bg);
@@ -527,8 +548,8 @@ a {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        padding: calc(var(--nav-h) + 2rem) 1.5rem 2.5rem;
+        justify-content: center;
+        padding: calc(var(--nav-h) + 3rem) 1.75rem 5rem;
     }
 
     /* Text colours adapt to dark overlay */
