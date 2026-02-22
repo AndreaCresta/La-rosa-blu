@@ -11,16 +11,27 @@ let lenis;
 
 if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-        duration: 1.3,
-        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
+        // lerp (linear interpolation) = snappy yet smooth, no "lag" feeling
+        // 0.08 ~ gentle, 0.12 ~ responsive, tweak to taste
+        lerp: 0.1,
         smoothTouch: false,
+        syncTouch: false,
+        overscroll: false,
     });
 
-    // Feed Lenis into GSAP ticker
+    // Feed Lenis into GSAP ticker (correct RAF handshake)
     if (typeof gsap !== 'undefined') {
-        gsap.ticker.add(time => lenis.raf(time * 1000));
-        gsap.ticker.lagSmoothing(0);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        // DO NOT disable lagSmoothing here — it causes scroll stutter
+    } else {
+        // Fallback: native RAF loop if GSAP not available
+        function lenisRAF(time) {
+            lenis.raf(time);
+            requestAnimationFrame(lenisRAF);
+        }
+        requestAnimationFrame(lenisRAF);
     }
 }
 
@@ -29,7 +40,8 @@ function scrollToTarget(id) {
     const el = document.querySelector(id);
     if (!el) return;
     if (lenis) {
-        lenis.scrollTo(el, { offset: -72, duration: 1.5 });
+        // lerp-based scrollTo — consistent with global scroll feel
+        lenis.scrollTo(el, { offset: -72, lerp: 0.1 });
     } else {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
