@@ -211,3 +211,184 @@ if (dot && ring && window.matchMedia('(hover:hover)').matches) {
 }
 
 console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;color:#C9A89A;font-size:13px;padding:6px 12px;');
+
+/* ── 9. Massage Accordion + personalised WhatsApp links ───── */
+(function initMassageAccordion() {
+    const accordions = document.querySelectorAll('.massage-accordion');
+
+    accordions.forEach(accordion => {
+        const items = accordion.querySelectorAll('.mac-item');
+
+        items.forEach(item => {
+            const trigger = item.querySelector('.mac-trigger');
+            const body    = item.querySelector('.mac-body');
+            if (!trigger || !body) return;
+
+            // Build personalised WhatsApp link for this massage
+            const massageName = trigger.querySelector('.mac-name')?.textContent?.trim() || '';
+            const bookBtn = body.querySelector('.mac-book');
+            if (bookBtn && massageName) {
+                const msg = encodeURIComponent(
+                    `Ciao Alessia! Sono interessata a prenotare: ${massageName}. Quando sei disponibile?`
+                );
+                bookBtn.href = `https://wa.me/393472700503?text=${msg}`;
+            }
+
+            // Accordion toggle
+            trigger.addEventListener('click', () => {
+                const isOpen = item.classList.contains('is-open');
+
+                // Close all siblings in this accordion group
+                items.forEach(other => {
+                    if (other === item) return;
+                    other.classList.remove('is-open');
+                    other.querySelector('.mac-trigger')?.setAttribute('aria-expanded', 'false');
+                    other.querySelector('.mac-body')?.setAttribute('hidden', '');
+                });
+
+                if (isOpen) {
+                    item.classList.remove('is-open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                    body.setAttribute('hidden', '');
+                } else {
+                    item.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                    body.removeAttribute('hidden');
+                }
+            });
+        });
+    });
+})();
+
+
+/* ── 10. Testimonials — 3-card sliding carousel ─────────── */
+(function initTestiCarousel() {
+    const track   = document.getElementById('testiTrack');
+    const dotsEl  = document.getElementById('testiDots');
+    const btnPrev = document.getElementById('testiPrev');
+    const btnNext = document.getElementById('testiNext');
+    if (!track || !dotsEl) return;
+
+    const cards = Array.from(track.querySelectorAll('.testi-card'));
+    const total = cards.length;
+
+    // How many cards visible depends on viewport
+    function getVisible() {
+        if (window.innerWidth < 768) return 1;
+        if (window.innerWidth < 992) return 2;
+        return 3;
+    }
+
+    let current = 0;
+    let autoTimer = null;
+
+    // Build dots (one per card)
+    cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'testi-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Recensione ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsEl.querySelectorAll('.testi-dot'));
+
+    function cardWidth() {
+        // single card width + gap in px
+        const card = cards[0];
+        if (!card) return 0;
+        const style = getComputedStyle(track);
+        const gap = parseFloat(style.gap) || 24;
+        return card.getBoundingClientRect().width + gap;
+    }
+
+    function goTo(idx) {
+        const vis = getVisible();
+        const maxIdx = total - vis;
+        // clamp
+        current = Math.max(0, Math.min(idx, maxIdx));
+        const offset = current * cardWidth();
+        track.style.transform = `translateX(-${offset}px)`;
+
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+    }
+
+    function next() { goTo(current + 1 >= total - getVisible() + 1 ? 0 : current + 1); }
+    function prev() { goTo(current - 1 < 0 ? total - getVisible() : current - 1); }
+
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(next, 4000);
+    }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    btnNext?.addEventListener('click', () => { next(); startAuto(); });
+    btnPrev?.addEventListener('click', () => { prev(); startAuto(); });
+
+    // Pause on hover/touch
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    track.addEventListener('touchstart', stopAuto, { passive: true });
+    track.addEventListener('touchend', startAuto, { passive: true });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (dx < -40) next();
+        else if (dx > 40) prev();
+        startAuto();
+    }, { passive: true });
+
+    // Re-calculate on resize
+    window.addEventListener('resize', () => goTo(current), { passive: true });
+
+    // Init
+    goTo(0);
+    startAuto();
+})();
+
+
+/* ── 9. Massage Accordion ───────────────────────────────── */
+(function initMassageAccordion() {
+    // All accordion lists — each .massage-accordion is a group
+    const accordions = document.querySelectorAll('.massage-accordion');
+
+    accordions.forEach(accordion => {
+        const items = accordion.querySelectorAll('.mac-item');
+
+        items.forEach(item => {
+            const trigger = item.querySelector('.mac-trigger');
+            const body = item.querySelector('.mac-body');
+            if (!trigger || !body) return;
+
+            trigger.addEventListener('click', () => {
+                const isOpen = item.classList.contains('is-open');
+
+                // Close all items in THIS accordion group
+                items.forEach(otherItem => {
+                    if (otherItem === item) return;
+                    otherItem.classList.remove('is-open');
+                    const otherTrigger = otherItem.querySelector('.mac-trigger');
+                    const otherBody = otherItem.querySelector('.mac-body');
+                    if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+                    if (otherBody) otherBody.setAttribute('hidden', '');
+                });
+
+                // Toggle clicked item
+                if (isOpen) {
+                    item.classList.remove('is-open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                    body.setAttribute('hidden', '');
+                } else {
+                    item.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                    body.removeAttribute('hidden');
+                }
+            });
+        });
+    });
+})();
+

@@ -1089,21 +1089,7 @@ a {
     background: var(--rose);
 }
 
-.testimonials__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-@media (max-width: 991px) {
-    .testimonials__grid {
-        grid-template-columns: 1fr;
-        max-width: 520px;
-    }
-}
+/* testimonials grid replaced by carousel — see bottom of file */
 
 .testi-card {
     background: rgba(255, 255, 255, .04);
@@ -1469,3 +1455,917 @@ footer#contact {
         display: none !important;
     }
 }
+
+
+/* ── Massaggi Section ────────────────────────────────────── */
+#massaggi {
+    background: var(--bg);
+    padding: 10rem 0 6rem;
+    overflow: hidden;
+}
+
+#massaggi .services__header {
+    margin-bottom: 5rem;
+}
+
+/* 3-column responsive grid */
+.massaggi__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+@media (max-width: 991px) {
+    .massaggi__grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1.25rem;
+    }
+}
+
+/* Massage Card */
+.massage-card {
+    background: var(--white);
+    border: 1px solid rgba(201, 168, 154, .2);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform .4s var(--easing), box-shadow .4s var(--easing), border-color .4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.massage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--rose-light);
+    transition: background .4s var(--easing);
+}
+
+.massage-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(10, 17, 40, .09);
+    border-color: rgba(201, 168, 154, .5);
+}
+
+.massage-card:hover::before {
+    background: var(--rose);
+}
+
+/* Accent variant (middle card) */
+.massage-card--accent {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+.massage-card--accent::before {
+    background: var(--rose);
+}
+
+.massage-card--accent .massage-card__title {
+    color: var(--white);
+}
+
+.massage-card--accent .massage-card__desc {
+    color: rgba(255, 255, 255, .65);
+}
+
+.massage-card--accent .massage-card__list li {
+    color: rgba(255, 255, 255, .8);
+    border-bottom-color: rgba(255, 255, 255, .08);
+}
+
+.massage-card--accent .massage-card__list li i {
+    color: var(--rose);
+}
+
+.massage-card--accent .massage-card__cta {
+    color: var(--rose-light);
+    border-color: rgba(201, 168, 154, .4);
+}
+
+.massage-card--accent .massage-card__cta:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--white);
+}
+
+.massage-card--accent .massage-card__icon-wrap {
+    background: rgba(255, 255, 255, .08);
+}
+
+.massage-card--accent .massage-card__icon-wrap svg {
+    stroke: var(--rose);
+}
+
+/* Icon wrap */
+.massage-card__icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+
+.massage-card__icon-wrap svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--rose);
+}
+
+.massage-card__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    color: var(--navy);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.massage-card__desc {
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: .5rem;
+}
+
+/* List items */
+.massage-card__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.massage-card__list li {
+    font-size: var(--fs-small);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgba(10, 17, 40, .06);
+}
+
+.massage-card__list li:last-child {
+    border-bottom: none;
+}
+
+.massage-card__list li i {
+    color: var(--sage);
+    font-size: .65rem;
+    flex-shrink: 0;
+}
+
+/* CTA link */
+.massage-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    border: 1px solid rgba(10, 17, 40, .2);
+    border-radius: 100px;
+    padding: .65rem 1.5rem;
+    margin-top: 1rem;
+    transition: background .35s var(--easing), color .35s, border-color .35s;
+    align-self: flex-start;
+}
+
+.massage-card__cta:hover {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+/* Callout strip */
+.massage-callout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.massage-callout__inner {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2744 100%);
+    border-radius: var(--radius-lg);
+    padding: 3rem 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.massage-callout__icon {
+    font-size: 2.5rem;
+    color: var(--rose);
+    flex-shrink: 0;
+}
+
+.massage-callout__inner > div {
+    flex: 1;
+    min-width: 200px;
+}
+
+.massage-callout__inner strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    color: var(--white);
+    margin-bottom: .4rem;
+}
+
+.massage-callout__inner p {
+    color: rgba(255, 255, 255, .65);
+    font-size: var(--fs-small);
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .massage-callout__inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .massage-callout__inner .btn-atelier {
+        align-self: center;
+    }
+}
+
+/* Update #services bg to alternate */
+#services {
+    background: var(--bg-2);
+}
+
+/* ── Massage Accordion (mac-*) ───────────────────────────── */
+.massage-card__header {
+    margin-bottom: .75rem;
+}
+
+.massage-accordion {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0;
+}
+
+/* Each accordion row */
+.mac-item {
+    border-bottom: 1px solid rgba(201, 168, 154, .18);
+}
+
+.massage-card--accent .mac-item {
+    border-bottom-color: rgba(255, 255, 255, .1);
+}
+
+.mac-item:last-child {
+    border-bottom: none;
+}
+
+/* Trigger button */
+.mac-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .7rem 0;
+    text-align: left;
+    color: inherit;
+    transition: color .25s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px; /* touch-friendly */
+}
+
+.mac-trigger:hover .mac-name,
+.mac-item.is-open .mac-name {
+    color: var(--rose);
+}
+
+.massage-card--accent .mac-trigger:hover .mac-name,
+.massage-card--accent .mac-item.is-open .mac-name {
+    color: var(--rose-light);
+}
+
+/* Massage name */
+.mac-name {
+    font-family: var(--font-body);
+    font-size: .82rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    transition: color .25s;
+    flex: 1;
+}
+
+.massage-card--accent .mac-name {
+    color: rgba(255, 255, 255, .88);
+}
+
+/* Meta: duration + chevron */
+.mac-meta {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-shrink: 0;
+}
+
+.mac-dur {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.massage-card--accent .mac-dur {
+    color: rgba(255, 255, 255, .45);
+}
+
+/* Chevron arrow */
+.mac-arrow {
+    font-size: .6rem;
+    color: var(--rose);
+    transition: transform .3s var(--easing);
+    flex-shrink: 0;
+}
+
+.mac-item.is-open .mac-arrow {
+    transform: rotate(180deg);
+}
+
+/* Body panel — animated with max-height */
+.mac-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .4s var(--easing), padding .3s;
+    padding: 0;
+    /* When hidden via HTML attr, still animate out */
+}
+
+.mac-body:not([hidden]) {
+    max-height: 400px;
+    padding-bottom: .9rem;
+}
+
+/* Remove HTML hidden to allow animation; JS handles visibility */
+.mac-body[hidden] {
+    display: block !important; /* override browser hidden, let max-height do the work */
+    max-height: 0;
+    padding-bottom: 0;
+}
+
+/* Body text */
+.mac-body > p {
+    font-size: .8rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: .75rem;
+}
+
+.massage-card--accent .mac-body > p {
+    color: rgba(255, 255, 255, .55);
+}
+
+/* Tags row: time + price */
+.mac-tags {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    margin-bottom: .75rem;
+}
+
+.mac-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .7rem;
+    font-weight: 500;
+    padding: .3rem .7rem;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+.mac-tag small {
+    font-weight: 400;
+    opacity: .75;
+}
+
+.mac-tag i {
+    font-size: .6rem;
+}
+
+.mac-tag--time {
+    background: rgba(138, 158, 140, .15);
+    color: var(--sage);
+}
+
+.massage-card--accent .mac-tag--time {
+    background: rgba(138, 158, 140, .2);
+    color: var(--sage-light);
+}
+
+.mac-tag--price {
+    background: rgba(201, 168, 154, .15);
+    color: var(--rose);
+}
+
+.massage-card--accent .mac-tag--price {
+    background: rgba(201, 168, 154, .2);
+    color: var(--rose-light);
+}
+
+/* Book button */
+.mac-book {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: #25D366;
+    border-radius: 100px;
+    padding: .45rem 1rem;
+    transition: background .3s, transform .2s;
+}
+
+.mac-book:hover {
+    background: #128C7E;
+    transform: translateY(-1px);
+    color: var(--white);
+}
+
+.mac-book i {
+    font-size: .75rem;
+}
+
+
+/* ── Mobile-first Global Improvements ────────────────────── */
+
+/* Better touch targets across the site */
+@media (max-width: 767px) {
+
+    /* Section padding tighter on mobile */
+    #massaggi {
+        padding: 5rem 0 4rem;
+    }
+
+    #services {
+        padding: 5rem 0 3rem !important;
+    }
+
+    #about,
+    #testimonials {
+        padding-top: 5rem !important;
+    }
+
+    /* Hero tighter on small screens */
+    .hero__text {
+        padding: calc(var(--nav-h) + 2rem) 1.25rem 7rem;
+    }
+
+    .hero__headline {
+        font-size: clamp(2.6rem, 11vw, 4rem);
+    }
+
+    .hero__body {
+        font-size: .95rem;
+    }
+
+    /* Nav item size bump (touch) */
+    .nav__drawer a {
+        font-size: 2rem;
+    }
+
+    /* Services grid: full-width, smaller aspect */
+    .services__grid {
+        padding: 0 1rem;
+    }
+
+    .service-panel:nth-child(1) {
+        aspect-ratio: 16/9;
+    }
+    .service-panel:nth-child(2),
+    .service-panel:nth-child(3) {
+        aspect-ratio: 16/9;
+    }
+
+    /* Massage cards single column, tighter padding */
+    .massaggi__grid {
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+
+    .massage-card {
+        padding: 1.75rem 1.25rem 1.25rem;
+    }
+
+    /* Mac trigger: bigger tap area */
+    .mac-trigger {
+        padding: .8rem 0;
+    }
+
+    /* Callout strip */
+    .massage-callout {
+        padding: 0 1rem;
+    }
+
+    /* About grid stacked */
+    .about__grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .about__image-wrap {
+        max-height: 260px;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+    }
+
+    .about__img {
+        height: 260px;
+        object-fit: cover;
+    }
+
+    /* Testimonials: single col */
+    .testimonials__grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 1rem;
+    }
+
+    /* Footer: compact */
+    .footer__grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+
+    .footer__map {
+        height: 180px;
+    }
+
+    /* Buttons: full-width on very small screens */
+    .hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero__actions .btn-atelier {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Section headings */
+    .section-header h2,
+    .services__header h2,
+    .testimonials__header h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+}
+
+/* Tablet tweaks */
+@media (min-width: 768px) and (max-width: 991px) {
+    #massaggi {
+        padding: 7rem 0 5rem;
+    }
+
+    .massaggi__grid {
+        grid-template-columns: 1fr;
+        max-width: 640px;
+    }
+
+    .massage-card {
+        padding: 2rem 1.75rem 1.75rem;
+    }
+}
+
+
+/* ── Fix: Services grid desktop — 3 equal columns ────────── */
+/* Override the asymmetric 2-column layout */
+.services__grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: auto !important;
+}
+
+.service-panel:nth-child(1) {
+    grid-row: auto !important; /* remove the span: 1/3 */
+    aspect-ratio: 3/4;
+}
+
+.service-panel:nth-child(2),
+.service-panel:nth-child(3) {
+    aspect-ratio: 3/4;
+}
+
+/* ── Fix: Service panel content — always visible + no overflow on mobile ── */
+/* On mobile: don't rely on hover, show content always */
+@media (max-width: 991px) {
+
+    /* Make images not zoom on touch (avoids overflow issue) */
+    .service-panel:hover .service-panel__img,
+    .service-panel:active .service-panel__img {
+        transform: none;
+    }
+
+    /* Always show the content without hover */
+    .service-panel__content {
+        padding: 1.25rem 1rem;
+    }
+
+    .service-panel__icon {
+        display: none; /* hide SVG icon on mobile to save space */
+    }
+
+    .service-panel__title {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        margin-bottom: .4rem;
+    }
+
+    /* Always show list and link on mobile */
+    .service-panel__list {
+        max-height: 100px !important;
+        opacity: 1 !important;
+        font-size: .75rem;
+    }
+
+    .service-panel__label {
+        font-size: .6rem;
+        margin-bottom: .25rem;
+    }
+
+    .service-panel__link {
+        opacity: 1 !important;
+        transform: none !important;
+        font-size: .65rem;
+        margin-top: .5rem;
+    }
+
+    /* Tighter overlay so text stays within image bounds */
+    .service-panel__overlay {
+        background: linear-gradient(to top,
+            rgba(10, 17, 40, .88) 0%,
+            rgba(10, 17, 40, .5) 50%,
+            rgba(10, 17, 40, .1) 100%) !important;
+    }
+
+    /* Fixed aspect ratio on mobile for panels */
+    .services__grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-panel:nth-child(1),
+    .service-panel:nth-child(2),
+    .service-panel:nth-child(3) {
+        aspect-ratio: 4/3;
+        grid-row: auto !important;
+    }
+}
+
+/* ── Fix: Mobile hero buttons — smaller ──────────────────── */
+@media (max-width: 767px) {
+    .hero__actions .btn-atelier {
+        font-size: .65rem;
+        padding: .65rem 1.4rem;
+        letter-spacing: .1em;
+    }
+
+    .hero__actions {
+        gap: .75rem;
+    }
+}
+
+
+/* ── Testimonials Carousel (3 cards visible, auto-slide) ──── */
+#testimonials {
+    background: var(--navy);
+    padding: 8rem 0 6rem;
+    overflow: hidden;
+}
+
+.testimonials__header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+}
+
+.testimonials__header .eyebrow {
+    color: var(--rose);
+}
+
+.testimonials__header h2 {
+    font-size: var(--fs-h2);
+    color: var(--white);
+}
+
+.testimonials__header .divider-line {
+    background: var(--rose);
+    margin: 1rem auto;
+}
+
+/* ── Carousel outer: clips overflow so only 3 cards show ── */
+.testi-carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sliding track — JS sets transform: translateX */
+.testi-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform .6s cubic-bezier(.25, .46, .45, .94);
+    will-change: transform;
+}
+
+/* Each card — 1/3 of track width (3 visible) */
+.testi-track .testi-card {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 0;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(201, 168, 154, .18);
+    border-left: 2px solid var(--rose);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    box-sizing: border-box;
+}
+
+/* Stars */
+.testi-card__stars {
+    color: var(--rose);
+    display: flex;
+    gap: .25rem;
+    font-size: .77rem;
+}
+
+/* Quote */
+.testi-card__quote {
+    font-family: var(--font-heading);
+    font-size: clamp(.95rem, 1.3vw, 1.15rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255, 255, 255, .88);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* Author */
+.testi-card__author {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .25rem;
+}
+
+.testi-card__avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--rose);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: .85rem;
+    flex-shrink: 0;
+}
+
+.testi-card__name {
+    display: block;
+    font-weight: 500;
+    font-size: .82rem;
+    color: var(--white);
+}
+
+.testi-card__role {
+    display: block;
+    font-size: .7rem;
+    color: rgba(255, 255, 255, .45);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+/* Controls row */
+.testi-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+/* Prev/next buttons */
+.testi-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 154, .35);
+    background: none;
+    color: var(--rose);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    transition: background .3s, border-color .3s, transform .2s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.testi-btn:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* Dots */
+.testi-dots {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.testi-dot {
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testi-dot::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(201, 168, 154, .35);
+    transition: background .3s, transform .3s;
+    display: block;
+}
+
+.testi-dot.is-active::after,
+.testi-dot:hover::after {
+    background: var(--rose);
+    transform: scale(1.4);
+}
+
+/* Mobile: 1 card visible */
+@media (max-width: 767px) {
+    #testimonials {
+        padding: 5rem 0 4rem;
+    }
+
+    .testi-carousel {
+        padding: 0 1.25rem;
+    }
+
+    .testi-track .testi-card {
+        flex: 0 0 100%;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .testi-track {
+        gap: 1rem;
+    }
+}
+
+/* Tablet: 2 cards visible */
+@media (min-width: 768px) and (max-width: 991px) {
+    .testi-track .testi-card {
+        flex: 0 0 calc(50% - .75rem);
+    }
+}
+
