@@ -264,10 +264,7 @@ console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;colo
 /* ── 10. Testimonials — 3-card sliding carousel ─────────── */
 (function initTestiCarousel() {
     const track   = document.getElementById('testiTrack');
-    const dotsEl  = document.getElementById('testiDots');
-    const btnPrev = document.getElementById('testiPrev');
-    const btnNext = document.getElementById('testiNext');
-    if (!track || !dotsEl) return;
+    if (!track) return;
 
     const cards = Array.from(track.querySelectorAll('.testi-card'));
     const total = cards.length;
@@ -282,20 +279,7 @@ console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;colo
     let current = 0;
     let autoTimer = null;
 
-    // Build dots (one per card)
-    cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'testi-dot';
-        dot.setAttribute('role', 'tab');
-        dot.setAttribute('aria-label', `Recensione ${i + 1}`);
-        dot.addEventListener('click', () => goTo(i));
-        dotsEl.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsEl.querySelectorAll('.testi-dot'));
-
     function cardWidth() {
-        // single card width + gap in px
         const card = cards[0];
         if (!card) return 0;
         const style = getComputedStyle(track);
@@ -306,33 +290,24 @@ console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;colo
     function goTo(idx) {
         const vis = getVisible();
         const maxIdx = total - vis;
-        // clamp
         current = Math.max(0, Math.min(idx, maxIdx));
         const offset = current * cardWidth();
         track.style.transform = `translateX(-${offset}px)`;
-
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
     }
 
     function next() { goTo(current + 1 >= total - getVisible() + 1 ? 0 : current + 1); }
     function prev() { goTo(current - 1 < 0 ? total - getVisible() : current - 1); }
 
-    function startAuto() {
-        stopAuto();
-        autoTimer = setInterval(next, 4000);
-    }
-    function stopAuto() { clearInterval(autoTimer); }
-
-    btnNext?.addEventListener('click', () => { next(); startAuto(); });
-    btnPrev?.addEventListener('click', () => { prev(); startAuto(); });
+    function startAuto() { stopAuto(); autoTimer = setInterval(next, 4000); }
+    function stopAuto()  { clearInterval(autoTimer); }
 
     // Pause on hover/touch
     track.addEventListener('mouseenter', stopAuto);
     track.addEventListener('mouseleave', startAuto);
     track.addEventListener('touchstart', stopAuto, { passive: true });
-    track.addEventListener('touchend', startAuto, { passive: true });
+    track.addEventListener('touchend',   startAuto, { passive: true });
 
-    // Touch/swipe support
+    // Swipe support
     let touchStartX = 0;
     track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
@@ -349,5 +324,6 @@ console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;colo
     goTo(0);
     startAuto();
 })();
+
 
 

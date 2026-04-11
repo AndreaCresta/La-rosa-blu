@@ -1162,7 +1162,6 @@ a {
 /* ── 9. Footer ───────────────────────────────────────────── */
 footer#contact {
     background: var(--navy);
-    border-top: 1px solid rgba(255, 255, 255, .06);
     padding: 6rem 0 3rem;
     color: rgba(255, 255, 255, .6);
 }
@@ -1300,7 +1299,7 @@ footer#contact {
     max-width: 1100px;
     margin: 4rem auto 0;
     padding: 1.5rem 2rem 0;
-    border-top: 1px solid rgba(255, 255, 255, .06);
+    border-top: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2187,7 +2186,7 @@ footer#contact {
 .testi-carousel {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
@@ -2271,75 +2270,12 @@ footer#contact {
     text-transform: uppercase;
 }
 
-/* Controls row */
-.testi-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
-    margin-top: 2rem;
-}
-
-/* Prev/next buttons */
-.testi-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid rgba(201, 168, 154, .35);
-    background: none;
-    color: var(--rose);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .8rem;
-    transition: background .3s, border-color .3s, transform .2s;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-
-.testi-btn:hover {
-    background: var(--rose);
-    border-color: var(--rose);
-    color: var(--white);
-    transform: scale(1.05);
-}
-
-/* Dots */
-.testi-dots {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
+/* Controls hidden — auto-only carousel */
+.testi-controls,
+.testi-btn,
+.testi-dots,
 .testi-dot {
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    background: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.testi-dot::after {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba(201, 168, 154, .35);
-    transition: background .3s, transform .3s;
-    display: block;
-}
-
-.testi-dot.is-active::after,
-.testi-dot:hover::after {
-    background: var(--rose);
-    transform: scale(1.4);
+    display: none;
 }
 
 /* Mobile: 1 card visible */
@@ -2349,7 +2285,7 @@ footer#contact {
     }
 
     .testi-carousel {
-        padding: 0 1.25rem;
+        padding: 0;
     }
 
     .testi-track .testi-card {
