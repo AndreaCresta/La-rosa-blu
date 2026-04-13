@@ -298,24 +298,15 @@ console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;colo
     function next() { goTo(current + 1 >= total - getVisible() + 1 ? 0 : current + 1); }
     function prev() { goTo(current - 1 < 0 ? total - getVisible() : current - 1); }
 
-    function startAuto() { stopAuto(); autoTimer = setInterval(next, 4000); }
+    function startAuto() { stopAuto(); autoTimer = setInterval(next, 3000); }
     function stopAuto()  { clearInterval(autoTimer); }
 
-    // Pause on hover/touch
+    // Pause on hover (sospeso solo col mouse dal computer)
     track.addEventListener('mouseenter', stopAuto);
     track.addEventListener('mouseleave', startAuto);
-    track.addEventListener('touchstart', stopAuto, { passive: true });
-    track.addEventListener('touchend',   startAuto, { passive: true });
-
-    // Swipe support
-    let touchStartX = 0;
-    track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (dx < -40) next();
-        else if (dx > 40) prev();
-        startAuto();
-    }, { passive: true });
+    
+    // I controlli touch (swipe manuale) sono stati rimossi come richiesto,
+    // così su smartphone scorrono solo in automatico.
 
     // Re-calculate on resize
     window.addEventListener('resize', () => goTo(current), { passive: true });

@@ -357,10 +357,8 @@ a {
         padding: 0 1.25rem;
         justify-content: space-between;
         /* brand-left, hamburger-right */
-        background: rgba(10, 17, 40, .35);
+        background: var(--navy);
         border-bottom-color: transparent;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
     }
 
     /* Always white text on mobile (sits over dark hero image) */
@@ -527,7 +525,8 @@ a {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: 100% center;
+        object-position: 67% center;
+        transform: scaleX(-1); /* Specchia l'immagine in orizzontale */
     }
 
     .hero__text {
@@ -1946,12 +1945,17 @@ footer#contact {
         padding: calc(var(--nav-h) + 2rem) 1.25rem 7rem;
     }
 
+    .hero__kicker {
+        margin-bottom: 4.5rem;
+    }
+
     .hero__headline {
         font-size: clamp(2.6rem, 11vw, 4rem);
     }
 
     .hero__body {
         font-size: .95rem;
+        margin-bottom: 5rem;
     }
 
     /* Nav item size bump (touch) */
@@ -2286,11 +2290,12 @@ footer#contact {
 
     .testi-carousel {
         padding: 0;
+        margin: 0 1.5rem; /* Margine esterno invece del padding, assicura che overflow:hidden tagli via le card successive */
     }
 
     .testi-track .testi-card {
         flex: 0 0 100%;
-        padding: 1.75rem 1.25rem;
+        padding: 1.5rem 1rem;
     }
 
     .testi-track {
