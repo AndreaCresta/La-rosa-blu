@@ -260,6 +260,27 @@ console.log('%c La Rosa Blu — Digital Atelier 🌹 ', 'background:#0A1128;colo
     });
 })();
 
+(function initServicePanelToggles() {
+    const toggles = document.querySelectorAll('.service-panel__toggle');
+
+    toggles.forEach(toggle => {
+        const panel = toggle.closest('.service-panel');
+        const list = document.getElementById(toggle.getAttribute('aria-controls'));
+        if (!panel || !list) return;
+
+        toggle.addEventListener('click', () => {
+            const isOpen = panel.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+
+            if (isOpen) {
+                list.style.maxHeight = `${list.scrollHeight + 24}px`;
+            } else {
+                list.style.maxHeight = '';
+            }
+        });
+    });
+})();
+
 
 /* ── 10. Testimonials — 3-card sliding carousel ─────────── */
 (function initTestiCarousel() {

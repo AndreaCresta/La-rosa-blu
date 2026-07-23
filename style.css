@@ -596,15 +596,11 @@ a {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
     transition: color .35s, border-color .35s;
 }
 
-.btn-atelier span {
-    position: relative;
-    z-index: 1;
-}
-
-.btn-atelier i {
+.btn-atelier > * {
     position: relative;
     z-index: 1;
 }
@@ -614,6 +610,7 @@ a {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 0;
     border-radius: inherit;
     transform: translateY(101%);
     transition: transform .5s var(--easing);
@@ -634,9 +631,12 @@ a {
     background: var(--rose);
 }
 
-.btn-atelier--dark:hover {
+.btn-atelier--dark:hover,
+.btn-atelier--dark:focus-visible,
+.btn-atelier--dark:active {
     border-color: var(--rose);
     color: var(--white);
+    box-shadow: 0 0 0 3px rgba(193, 154, 122, .16);
 }
 
 /* Variant — outline */
@@ -764,6 +764,10 @@ a {
     .service-panel:nth-child(3) {
         aspect-ratio: 3/2;
     }
+
+    .service-panel__toggle {
+        display: inline-flex;
+    }
 }
 
 /* Panel image */
@@ -868,6 +872,40 @@ a {
     opacity: 1;
 }
 
+.service-panel.is-open .service-panel__list {
+    max-height: 320px;
+    opacity: 1;
+}
+
+.service-panel__toggle {
+    display: none;
+    border: 1px solid rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .08);
+    color: rgba(255, 255, 255, .95);
+    font-size: var(--fs-small);
+    padding: .75rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: background .3s, transform .3s, border-color .3s;
+}
+
+.service-panel__toggle:hover,
+.service-panel__toggle:focus {
+    background: rgba(255, 255, 255, .15);
+    border-color: rgba(255, 255, 255, .7);
+}
+
+.service-panel__toggle i {
+    display: inline-block;
+    transition: transform .3s;
+}
+
+.service-panel.is-open .service-panel__toggle i {
+    transform: rotate(180deg);
+}
+
 .service-panel__link {
     display: inline-flex;
     align-items: center;
@@ -883,7 +921,8 @@ a {
     transition: opacity .35s, transform .35s;
 }
 
-.service-panel:hover .service-panel__link {
+.service-panel:hover .service-panel__link,
+.service-panel.is-open .service-panel__link {
     opacity: 1;
     transform: translateY(0);
 }
